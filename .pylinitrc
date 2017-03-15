@@ -1,0 +1,43 @@
+[MASTER]
+ignore=minipil
+
+[DESIGN]
+max-args=10
+max-locals=20
+
+[FORMAT]
+max-line-length=100
+
+[MISCELLANEOUS]
+notes=FIXME,XXX,TODO,NOTE,NB
+
+[BASIC]
+bad-functions=apply,input
+good-names=i,j,k,ex,Run,_,id
+const-rgx=((app)|(logger)|([A-Z_][A-Z0-9_]*)|(__.*__))$
+dummy-variables-rgx=^_[a-zA-Z0-9_]*$
+
+[MESSAGES CONTROL]
+# C0111 - Allow missing docstrings
+# I0011 - If we're locally disabling a check, it shouldn't stil complain.
+# W0511 - allow todos
+# W0142 - ** "magic" isn't that magical
+# E0202 - An attribute affected in %s line %s hide this method
+# W0613 - Unused argument %r
+# W0212 - Access to a protected member %s of a client class
+# W0703 - Catching too general exception %s
+disable=C0111,I0011,W0511,W0142,E0202,W0613,W0212,W0703,logging-format-interpolation
+
+# Allow 1-letter variables
+variable-rgx = [a-z_][a-z0-9_]{0,30}$
+# Allow 2-letter instance attributes, arguments
+attr-rgx = [a-z_][a-z0-9_]{1,30}$
+argument-rgx = [a-z_][a-z0-9_]{1,30}$
+# __tracebackhide__ is a py.test thing
+dummy-variables-rgx = _+$|(_[a-zA-Z0-9_]*[a-zA-Z0-9]+?$)|dummy|__tracebackhide__
+
+
+[TYPECHECK]
+ignored-classes=EnvironmentInstance
+# distutils does deep dark magic to work in virtualenvs:
+ignored-modules=distutils,pytest
